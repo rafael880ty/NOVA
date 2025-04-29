@@ -1,0 +1,229 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #000000;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    opacity: 0; /* Start hidden for fade-in */
+    animation: fadeIn 1s ease-in-out forwards;
+    scroll-behavior: smooth; /* Added for smooth scrolling */
+}
+
+html {
+    scroll-behavior: smooth; /* Ensure smooth scroll on html level too */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space out logo/name and nav */
+    padding: 20px 40px; /* Increased padding */
+    gap: 15px; /* Space between logo and name */
+    border-bottom: 1px solid #333; /* Subtle separator */
+    position: sticky; /* Make header sticky */
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.9); /* Semi-transparent background for sticky header */
+    z-index: 1000; /* Ensure header is above other content */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.logo-container { /* New container */
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    height: 40px; /* Adjusted size slightly */
+    width: auto;
+    transition: transform 0.3s ease; /* Smooth transition for hover */
+}
+
+.logo:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+}
+
+.company-name {
+    font-size: 2.2em; /* Adjusted size slightly */
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: 1px; /* Slight spacing */
+}
+
+/* Navigation Styles */
+.navigation ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 25px; /* Space between nav items */
+}
+
+.navigation li {
+    display: inline;
+}
+
+.navigation a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navigation a:hover,
+.navigation a:focus {
+    background-color: #ffffff;
+    color: #000000;
+    outline: none;
+}
+
+.main-content {
+    flex-grow: 1; /* Allows main content to fill available space */
+    /* Removed flex centering to allow sections to stack vertically */
+    padding: 0; /* Remove padding here, add to sections */
+    width: 100%;
+    max-width: 1200px; /* Max width for content */
+    margin: 0 auto; /* Center content area */
+}
+
+.hero { /* Style the intro section */
+    text-align: center;
+    padding: 60px 20px;
+    /* background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)); Optional gradient */
+}
+
+.hero h2 {
+    font-size: 2.5em; /* Slightly larger */
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 1.3em; /* Slightly larger */
+    color: #cccccc; /* Lighter grey for subtitle */
+    max-width: 600px;
+    margin: 0 auto; /* Center the paragraph */
+}
+
+.content-section { /* Common style for Products/Services sections */
+    padding: 60px 40px; /* Add padding top/bottom and sides */
+    text-align: center;
+    border-top: 1px solid #222; /* Separator between sections */
+}
+
+.content-section h2 {
+    font-size: 2.2em;
+    margin-bottom: 40px;
+    color: #eee;
+}
+
+.item-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 30px; /* Space between items */
+    margin-bottom: 30px;
+}
+
+.item-card {
+    background-color: #1a1a1a; /* Dark background for cards */
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.item-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 8px 15px rgba(255, 255, 255, 0.1);
+}
+
+.item-card h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    color: #ffffff;
+}
+
+.item-card p {
+    color: #bbbbbb;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.item-card button {
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.item-card button:hover {
+    background-color: #cccccc;
+    transform: scale(1.05);
+}
+
+.content-section > p { /* Style the 'More coming soon' text */
+    color: #aaaaaa;
+    font-style: italic;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px; /* Increased padding */
+    font-size: 0.9em;
+    color: #aaaaaa;
+    border-top: 1px solid #333; /* Subtle separator */
+    margin-top: auto; /* Pushes footer to the bottom */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column; /* Stack logo/name and nav vertically */
+        padding: 15px 20px;
+        align-items: center; /* Center items when stacked */
+    }
+
+    .navigation ul {
+        margin-top: 15px; /* Add space above nav when stacked */
+        gap: 15px;
+    }
+
+    .navigation a {
+        font-size: 1em;
+    }
+
+    .hero h2 {
+        font-size: 2em;
+    }
+
+    .hero p {
+        font-size: 1.1em;
+    }
+
+    .content-section {
+        padding: 40px 20px;
+    }
+
+    .content-section h2 {
+        font-size: 1.8em;
+    }
+
+    .item-grid {
+        grid-template-columns: 1fr; /* Stack cards on smaller screens */
+    }
+}

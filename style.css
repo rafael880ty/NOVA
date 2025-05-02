@@ -141,7 +141,8 @@ html {
     line-height: 1.6;
 }
 
-.item-card button {
+.item-card button,
+.button-link {
     background-color: #ffffff;
     color: #000000;
     border: none;
@@ -151,9 +152,12 @@ html {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
 }
 
-.item-card button:hover {
+.item-card button:hover,
+.button-link:hover {
     background-color: #cccccc;
     transform: scale(1.05);
 }

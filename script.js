@@ -22,23 +22,32 @@ document.querySelectorAll('.navigation a[href^="#"]').forEach(anchor => {
 */
 
 // Example: Animate cards on scroll into view (optional enhancement)
-const cards = document.querySelectorAll('.item-card');
+// Select both cards and button links for observation
+const itemsToObserve = document.querySelectorAll('.item-card, .button-link');
 
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.style.animation = 'cardFadeInUp 0.6s ease-out forwards';
-            observer.unobserve(entry.target); // Optional: stop observing once animated
+            // Apply animation only to item cards
+            if (entry.target.classList.contains('item-card')) {
+                entry.target.style.animation = 'cardFadeInUp 0.6s ease-out forwards';
+            } else {
+                 // Ensure button links are visible immediately if they are in view
+                 entry.target.style.opacity = '1';
+                 entry.target.style.transform = 'translateY(0)';
+            }
+            observer.unobserve(entry.target); // Optional: stop observing once animated/visible
         }
     });
 }, {
-    threshold: 0.1 // Trigger when 10% of the card is visible
+    threshold: 0.1 // Trigger when 10% of the element is visible
 });
 
-cards.forEach(card => {
-    card.style.opacity = '0'; // Start hidden for animation
-    observer.observe(card);
+itemsToObserve.forEach(item => {
+    item.style.opacity = '0'; // Start hidden for animation or visibility check
+    observer.observe(item);
 });
+
 
 // Add CSS keyframes for the animation (add this to style.css or here in a style tag)
 const styleSheet = document.createElement("style")
@@ -54,6 +63,14 @@ styleSheet.innerText = `
         transform: translateY(0);
     }
 }
+
+/* Ensure button links within cards start hidden too if needed */
+.item-card .button-link {
+    opacity: 0; /* Inherit card's starting opacity */
+    transform: translateY(30px); /* Match card's starting transform */
+    /* Animation will be applied when the card animates in */
+}
+
 `;
 document.head.appendChild(styleSheet);
 
